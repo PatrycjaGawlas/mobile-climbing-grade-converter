@@ -1,0 +1,34 @@
+[
+    {
+        "name": "uiaa",
+        "id": 1,
+        "fullName": "UIAA",
+        "type": "sport",
+        "grades": ["V+", "VI-", "VI", "VI+", "VII-", "VII", "VII+", "VII+/VIII-", "VIII-", "VIII"]
+    },
+    {
+        "name": "france",
+        "id": 2,
+        "fullName": "France",
+        "type": "sport",
+        "grades": ["5a", "5b", "5c", "6a", "6a+", "6b", "6b+", "6c", "6c+", "7a"]
+    },
+    {
+        "name": "poland",
+        "id": 3,
+        "fullName": "Poland",
+        "type": "sport"
+    },
+    {
+        "name": "france",
+        "id": 4,
+        "fullName": "France",
+        "type": "boulder"
+    },
+    {
+        "name": "hueco",
+        "id": 5,
+        "fullName": "Hueco",
+        "type": "boulder"
+    }
+]

@@ -1,0 +1,7 @@
+{
+  "name": "grade-converter",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
