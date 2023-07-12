@@ -1,8 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 /* Ionic Variables and Theming. For more info, please see:
 http://ionicframework.com/docs/theming/ */
 
+
 /** Ionic CSS Variables **/
 :root {
+  --ion-font-family: 'Montserrat';
+
   --ion-background-color: linear-gradient(165.16deg, rgba(43, 114, 118, 0.65) -9.01%, rgba(216, 198, 173, 0.937157) 71.93%, #FED8B9 96.86%);
 	--ion-background-color-rgb: linear-gradient(165.16deg, rgba(43, 114, 118, 0.65) -9.01%, rgba(216, 198, 173, 0.937157) 71.93%, #FED8B9 96.86%);
 

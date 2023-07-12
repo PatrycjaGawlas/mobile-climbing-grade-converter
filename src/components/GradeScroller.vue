@@ -47,9 +47,11 @@ const rightGrades = computed(() => {
   font-size: 24px;
   border-radius: 15px;
   background: rgba(217, 217, 217, 0.35);
-  padding: 32px;
+  padding: 32px 0;
   margin-top: 32px;
   display: flex;
+  // TO DO
+  min-height: calc(100% - 200px);
   &__column {
     align-items: center;
     width: 50%;

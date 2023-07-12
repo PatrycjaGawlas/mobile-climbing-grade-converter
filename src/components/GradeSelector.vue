@@ -1,51 +1,61 @@
 <template>
   <div class="grade-selector">
-    <ion-select
-      aria-label="Garde 1"
-      interface="action-sheet"
-      placeholder="Select Grade System"
-      @ionChange="selectGradeSystem(1, $event.detail.value)"
-    >
-      <ion-select-option
-        v-for="system in leftGradeSystems"
-        :key="system.id"
-        :value="system.name"
+    <div class="grade-selector__column">
+      <ion-select
+        aria-label="Garde 1"
+        interface="action-sheet"
+        placeholder="Select System"
+        v-model="selectedSystemLeft"
+        @ionChange="selectGradeSystem(1, $event.detail.value)"
       >
-        {{ system.fullName }}
-      </ion-select-option>
-    </ion-select>
-    <ion-select
-      aria-label="Grade 2"
-      interface="action-sheet"
-      placeholder="Select Grade System"
-      @ionChange="selectGradeSystem(2, $event.detail.value)"
-    >
-      <ion-select-option
-        v-for="system in rightGradeSystems"
-        :key="system.id"
-        :value="system.name"
+        <ion-select-option
+          v-for="system in leftGradeSystems"
+          :key="system.id"
+          :value="system.name"
+        >
+          {{ system.fullName }}
+        </ion-select-option>
+      </ion-select>
+    </div>
+    <div class="grade-selector__column">
+      <ion-select
+        aria-label="Grade 2"
+        interface="action-sheet"
+        placeholder="Select System"
+        v-model="selectedSystemRight"
+        @ionChange="selectGradeSystem(2, $event.detail.value)"
       >
-        {{ system.fullName }}
-      </ion-select-option>
-    </ion-select>
+        <ion-select-option
+          v-for="system in rightGradeSystems"
+          :key="system.id"
+          :value="system.name"
+        >
+          {{ system.fullName }}
+        </ion-select-option>
+      </ion-select>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 import { IonSelect, IonSelectOption } from "@ionic/vue";
 import gradeData from "../assets/grade-data.json";
 
-const props = defineProps(["gradeType"]);
+const props = defineProps(["climbingType"]);
 const emit = defineEmits(["update-grade-system"]);
 
 const gradeSystems = ref(gradeData);
 const selectedSystemLeft = ref("");
 const selectedSystemRight = ref("");
 
+watch(() => props.climbingType, () => {
+  resetGradeSystems();
+})
+
 const filteredGradeSystems = computed(() => {
   return gradeSystems.value.filter((gradeSystem) => {
-    return gradeSystem.type === props.gradeType;
+    return gradeSystem.type === props.climbingType;
   });
 });
 
@@ -73,6 +83,11 @@ function selectGradeSystem(order: number, gradeSystem: string) {
     gradeSystem,
   });
 }
+
+function resetGradeSystems() {
+  selectedSystemLeft.value = '';
+  selectedSystemRight.value = '';
+}
 </script>
 
 <style scoped lang="scss">
@@ -81,5 +96,11 @@ function selectGradeSystem(order: number, gradeSystem: string) {
   align-items: center;
   justify-content: space-around;
   margin-top: 32px;
+
+  &__column {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+  }
 }
 </style>

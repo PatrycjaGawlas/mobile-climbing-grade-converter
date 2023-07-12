@@ -1,16 +1,16 @@
 <template>
   <ion-content class="ion-padding">
     <ToggleButton
-      @update-grade-type="updateGradeType($event)"
-      :grade-type="gradeType"
+      @update-climbing-type="updateClimbingType($event)"
+      :climbing-type="climbingType"
     />
     <GradeSelector 
       @update-grade-system="upgradeGradeSystem($event)"
-      :grade-type="gradeType"
+      :climbing-type="climbingType"
     />
     <GradeScroller
-        :left-grade-system="gradeSystemLeft"
-        :right-grade-system="gradeSystemRight"
+      :left-grade-system="gradeSystemLeft"
+      :right-grade-system="gradeSystemRight"
     />
   </ion-content>
 </template>
@@ -23,16 +23,17 @@ import GradeSelector from '../components/GradeSelector.vue'
 import { IonContent } from '@ionic/vue'
 import { ref } from 'vue'
 
-const gradeType = ref('sport')
+const climbingType = ref('sport')
 const gradeSystemLeft = ref('')
 const gradeSystemRight = ref('')
 
-function updateGradeType(type: string) {
-  gradeType.value = type;
+function updateClimbingType(type: string) {
+  climbingType.value = type;
+  gradeSystemLeft.value = '';
+  gradeSystemRight.value = '';
 }
 
-function upgradeGradeSystem({ order, gradeSystem }) {
-  console.log(gradeSystem);
+function upgradeGradeSystem({ order, gradeSystem }: {order: number, gradeSystem: string}) {
   if (order === 1) {
     gradeSystemLeft.value = gradeSystem;
   } else {
