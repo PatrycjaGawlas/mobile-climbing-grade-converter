@@ -2,14 +2,14 @@
   <div class="grade-scroller">
     <div class="grade-scroller__column">
       <div 
-        class="grade-scroller__grade"
+        class="grade-scroller__grade grade-scroller__grade--left"
         v-for="grade in leftGrades"
         :key="grade"
       >{{ grade }}</div>
     </div>
     <div class="grade-scroller__column">
       <div
-        class="grade-scroller__grade"
+        class="grade-scroller__grade grade-scroller__grade--right"
         v-for="grade in rightGrades"
         :key="grade"
       >
@@ -47,19 +47,31 @@ const rightGrades = computed(() => {
   font-size: 24px;
   border-radius: 15px;
   background: rgba(217, 217, 217, 0.35);
-  padding: 32px 0;
   margin-top: 32px;
   display: flex;
-  // TO DO
-  min-height: calc(100% - 200px);
+  min-height: calc(100% - 195px);
   &__column {
-    align-items: center;
     width: 50%;
-    display: flex;
     flex-direction: column;
   }
   &__grade {
-    margin-bottom: 24px;
+    padding: 12px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    &:nth-child(even) {
+      background: rgba(67, 76, 79, 0.1);
+    }
+    &--left {
+      &:last-child {
+        border-radius: 0 0 0 15px;
+      }
+    }
+    &--right {
+      &:last-child {
+        border-radius: 0 0 15px 0;
+      }
+    }
   }
 }
 </style>
