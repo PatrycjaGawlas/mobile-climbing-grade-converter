@@ -49,7 +49,8 @@ const rightGrades = computed(() => {
   background: rgba(217, 217, 217, 0.35);
   margin-top: 32px;
   display: flex;
-  min-height: calc(100% - 195px);
+  height: calc(100% - 195px);
+  overflow: auto;
   &__column {
     width: 50%;
     flex-direction: column;
