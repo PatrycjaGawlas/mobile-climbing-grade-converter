@@ -1,45 +1,50 @@
 <template>
   <div class="grade-scroller">
-    <div class="grade-scroller__column">
-      <div 
-        class="grade-scroller__grade grade-scroller__grade--left"
-        v-for="grade in leftGrades"
-        :key="grade"
-      >{{ grade }}</div>
-    </div>
-    <div class="grade-scroller__column">
-      <div
-        class="grade-scroller__grade grade-scroller__grade--right"
-        v-for="grade in rightGrades"
-        :key="grade"
-      >
-        {{ grade }}
-      </div>
-    </div>
+    <GradeScrollerColumn v-if="grades.left" :grades="grades.left"/>
+    <GradeScrollerColumn v-if="grades.right" :grades="grades.right"/>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import gradeData from "../assets/grade-data.json";
+import GradeScrollerColumn from './GradeScrollerColumn'
 
 const props = defineProps(["leftGradeSystem", "rightGradeSystem"]);
 
 const data = ref(gradeData);
 
-const leftGrades = computed(() => {
-  const gradeSystem = data.value.find(
+const grades = computed(() => {
+  const gradesData = JSON.parse(JSON.stringify(data.value));
+
+  const leftGrades = gradesData.find(
     (system) => system.name === props.leftGradeSystem
-  );
-  return gradeSystem?.grades ? gradeSystem.grades : [];
+  )?.grades || [];
+
+  const rightGrades = gradesData.find(
+    (system) => system.name === props.rightGradeSystem
+  )?.grades || [];
+
+  let gradesLength = leftGrades.length < rightGrades.length ? leftGrades.length : rightGrades.length
+
+  for (let i = 0; i < gradesLength; i++) {
+    if (
+      leftGrades[i].includes('/') && rightGrades[i].includes('/') ||
+      (leftGrades[i] === leftGrades[i + 1] || leftGrades[i] === leftGrades[i - 1]) && rightGrades[i].includes('/') ||
+      (rightGrades[i] === rightGrades[i + 1] || rightGrades[i] === rightGrades[i - 1]) && leftGrades[i].includes('/')
+    ) {
+      leftGrades.splice(i, 1);
+      rightGrades.splice(i, 1);
+      gradesLength = gradesLength - 1;
+    }
+  }
+
+  return {
+    left: leftGrades,
+    right: rightGrades
+  }
 });
 
-const rightGrades = computed(() => {
-  const gradeSystem = data.value.find(
-    (system) => system.name === props.rightGradeSystem
-  );
-  return gradeSystem?.grades ? gradeSystem.grades : [];
-});
 </script>
 
 <style scoped lang="scss">
@@ -51,28 +56,5 @@ const rightGrades = computed(() => {
   display: flex;
   height: calc(100% - 195px);
   overflow: auto;
-  &__column {
-    width: 50%;
-    flex-direction: column;
-  }
-  &__grade {
-    padding: 12px 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    &:nth-child(even) {
-      background: rgba(67, 76, 79, 0.1);
-    }
-    &--left {
-      &:last-child {
-        border-radius: 0 0 0 15px;
-      }
-    }
-    &--right {
-      &:last-child {
-        border-radius: 0 0 15px 0;
-      }
-    }
-  }
 }
 </style>

@@ -12,6 +12,7 @@
       :class="{ 'toggle__element--selected': props.climbingType === 'boulder' }"
       @click="selectClimbingType('boulder')"
     >
+      <img src="../assets/icons/boulder.svg" />
       BOULDER
     </div>
   </div>
@@ -36,8 +37,10 @@ function selectClimbingType(type: string): void {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     width: 50%;
     background: rgba(254, 216, 185, 0.35);
+    padding: 8px 0;
     &--left {
       border-radius: 15px 0 0 15px;
     }
@@ -46,6 +49,11 @@ function selectClimbingType(type: string): void {
     }
     &--selected {
       background: #f3b481;
+    }
+    img {
+      object-fit: contain;
+      height: 50px;
+      margin-bottom: 6px;
     }
   }
 }
