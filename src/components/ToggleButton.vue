@@ -5,7 +5,8 @@
       :class="{ 'toggle__element--selected': props.climbingType === 'sport' }"
       @click="selectClimbingType('sport')"
     >
-      SPORT
+      <img src="../assets/icons/sport.svg" />
+      SPORT CLIMBING
     </div>
     <div
       class="toggle__element toggle__element--right"
@@ -13,7 +14,7 @@
       @click="selectClimbingType('boulder')"
     >
       <img src="../assets/icons/boulder.svg" />
-      BOULDER
+      BOULDERING
     </div>
   </div>
 </template>
@@ -30,7 +31,6 @@ function selectClimbingType(type: string): void {
 <style scoped lang="scss">
 .toggle {
   width: 100%;
-  height: 91px;
   display: flex;
   border-radius: 15px;
   &__element {
@@ -40,7 +40,8 @@ function selectClimbingType(type: string): void {
     flex-direction: column;
     width: 50%;
     background: rgba(254, 216, 185, 0.35);
-    padding: 8px 0;
+    padding: 10px 0;
+    font-size: 14px;
     &--left {
       border-radius: 15px 0 0 15px;
     }
@@ -52,8 +53,8 @@ function selectClimbingType(type: string): void {
     }
     img {
       object-fit: contain;
-      height: 50px;
-      margin-bottom: 6px;
+      height: 48px;
+      margin-bottom: 8px;
     }
   }
 }
