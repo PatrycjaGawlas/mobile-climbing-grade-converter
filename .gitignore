@@ -1,11 +1,32 @@
-# Packages
-node_modules
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
 
-# System Files
+*~
+*.sw[mnpcod]
+.tmp
+*.tmp
+*.tmp.*
+*.sublime-project
+*.sublime-workspace
 .DS_Store
+Thumbs.db
+UserInterfaceState.xcuserstate
+$RECYCLE.BIN/
 
-# testing
+*.log
+log.txt
+npm-debug.log*
+
+/.idea
+/.ionic
+/.sass-cache
+/.sourcemaps
+/.versions
+/.vscode/*
+!/.vscode/extensions.json
 /coverage
-
-# production
-/build
+/dist
+/node_modules
+/platforms
+/plugins
+/www
