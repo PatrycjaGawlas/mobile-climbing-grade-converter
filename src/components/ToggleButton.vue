@@ -49,7 +49,7 @@ function selectClimbingType(type: string): void {
       border-radius: 0 15px 15px 0;
     }
     &--selected {
-      background: #f3b481;
+      background: rgba(243, 180, 129, 0.7);
     }
     img {
       object-fit: contain;
