@@ -2,13 +2,14 @@
   <div class="grade-selector">
     <div class="grade-selector__column">
       <ion-select
+        :interface="selectInterface"
         aria-label="Garde 1"
-        interface="action-sheet"
         placeholder="Select System"
         v-model="selectedSystemLeft"
         @ionChange="selectGradeSystem(1, $event.detail.value)"
       >
         <ion-select-option
+          class="grade-selector__select"
           v-for="system in leftGradeSystems"
           :key="system.id"
           :value="system.name"
@@ -20,7 +21,7 @@
     <div class="grade-selector__column">
       <ion-select
         aria-label="Grade 2"
-        interface="action-sheet"
+        :interface="selectInterface"
         placeholder="Select System"
         v-model="selectedSystemRight"
         @ionChange="selectGradeSystem(2, $event.detail.value)"
@@ -41,7 +42,9 @@
 import { ref, computed, watch } from "vue";
 import { IonSelect, IonSelectOption } from "@ionic/vue";
 import gradeData from "../assets/grade-data.json";
+import { useResponsiveSelect } from '../composables/useResponsiveSelect.js';
 
+const { selectInterface } = useResponsiveSelect();
 const props = defineProps(["climbingType"]);
 const emit = defineEmits(["update-grade-system"]);
 
