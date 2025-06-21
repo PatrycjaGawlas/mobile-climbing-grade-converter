@@ -18,11 +18,11 @@ const grades = computed(() => {
   const gradesData = JSON.parse(JSON.stringify(data.value));
 
   const leftGrades = gradesData.find(
-    (system) => system.name === props.leftGradeSystem
+    (system: Grade) => system.name === props.leftGradeSystem
   )?.grades || [];
 
   const rightGrades = gradesData.find(
-    (system) => system.name === props.rightGradeSystem
+    (system: Grade) => system.name === props.rightGradeSystem
   )?.grades || [];
 
   let gradesLength = leftGrades.length < rightGrades.length ? leftGrades.length : rightGrades.length

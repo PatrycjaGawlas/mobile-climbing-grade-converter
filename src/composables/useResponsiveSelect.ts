@@ -1,7 +1,10 @@
-import { onMounted, onUnmounted, ref } from "vue";
+import { onMounted, onUnmounted, ref, Ref } from "vue";
+import type { SelectInterface } from "@ionic/core/dist/types/components/select/select-interface";
 
-export function useResponsiveSelect() {
-    const selectInterface = ref('popup');
+export function useResponsiveSelect(): {
+    selectInterface: Ref<SelectInterface>;
+  } {
+    const selectInterface: Ref<SelectInterface> = ref('popover');
 
     const setSelectInterface = () => {
         const screenWidth = window.innerWidth;
