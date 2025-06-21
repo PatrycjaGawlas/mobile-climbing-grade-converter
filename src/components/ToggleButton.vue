@@ -33,6 +33,7 @@ function selectClimbingType(type: string): void {
   width: 100%;
   display: flex;
   border-radius: 15px;
+  cursor: pointer;
   &__element {
     display: flex;
     justify-content: center;
