@@ -1,6 +1,8 @@
 <template>
   <ion-page>
     <ion-content class="ion-padding">
+      <h1>Climbing Grade Converter</h1>
+      <p class="home-view__text">Easily convert climbing grades between different systems including French, Yosemite, UIAA, British, and much more.</p>
       <ToggleButton
         @update-climbing-type="updateClimbingType($event)"
         :climbing-type="climbingType"
@@ -46,3 +48,11 @@ function upgradeGradeSystem({ order, gradeSystem }: {order: number, gradeSystem:
 }
 
 </script>
+
+<style scoped lang="scss">
+ .home-view {
+  &__text {
+    margin-bottom: 32px
+  }
+ }
+</style>
