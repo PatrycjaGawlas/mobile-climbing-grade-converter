@@ -10,7 +10,11 @@ import { ref, computed } from "vue";
 import gradeData from "../assets/grade-data.json";
 import GradeScrollerColumn from './GradeScrollerColumn.vue'
 
-const props = defineProps(["leftGradeSystem", "rightGradeSystem"]);
+interface GradeScrollerProps {
+  leftGradeSystem: string;
+  rightGradeSystem: string;
+}
+const props = defineProps<GradeScrollerProps>();
 
 const data = ref(gradeData);
 

@@ -20,7 +20,10 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps(["climbingType"]);
+interface ToggleButtonProps {
+  climbingType: string;
+}
+const props = defineProps<ToggleButtonProps>();
 const emit = defineEmits(["update-climbing-type"]);
 
 function selectClimbingType(type: string): void {

@@ -8,10 +8,12 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+interface GradeScrollerColumnProps {
+  grades: string[];
+}
 
-defineProps(["grades"]);
-
+defineProps<GradeScrollerColumnProps>();
 </script>
 
 <style scoped lang="scss">

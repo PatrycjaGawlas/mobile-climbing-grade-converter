@@ -45,7 +45,10 @@ import gradeData from "../assets/grade-data.json";
 import { useResponsiveSelect } from '../composables/useResponsiveSelect.js';
 
 const { selectInterface } = useResponsiveSelect();
-const props = defineProps(["climbingType"]);
+interface GradeSelectorProps {
+  climbingType: string;
+}
+const props = defineProps<GradeSelectorProps>();
 const emit = defineEmits(["update-grade-system"]);
 
 const gradeSystems = ref(gradeData);

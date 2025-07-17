@@ -5,9 +5,10 @@
 </template>
 
 <script setup lang="ts">
-
-const props = defineProps(['text']);
-
+interface TextBoxProps {
+  text: string[];
+}
+const props = defineProps<TextBoxProps>();
 </script>
 
 <style scoped>
