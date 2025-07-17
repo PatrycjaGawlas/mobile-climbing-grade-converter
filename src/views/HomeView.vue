@@ -8,7 +8,7 @@
         :climbing-type="climbingType"
       />
       <GradeSelector
-        @update-grade-system="upgradeGradeSystem($event)"
+        @update-grade-system="updateGradeSystem($event)"
         :climbing-type="climbingType"
       />
       <GradeScroller
@@ -39,7 +39,7 @@ function updateClimbingType(type: string) {
   gradeSystemRight.value = '';
 }
 
-function upgradeGradeSystem({ order, gradeSystem }: {order: number, gradeSystem: string}) {
+function updateGradeSystem({ order, gradeSystem }: {order: number, gradeSystem: string}) {
   if (order === 1) {
     gradeSystemLeft.value = gradeSystem;
   } else {
